@@ -43,18 +43,18 @@
 git clone https://github.com/sumeng0110/little-bots-home.git
 cd xiaojijia
 
-### 2.安装依赖（以 Python Flask 为例）
+### **2.安装依赖（以 Python Flask 为例）**
 pip install -r requirements.txt
 
-3. 配置环境变量
+**3. 配置环境变量**
 在根目录创建 .env 文件，填入你的 API Key：
 LLM_API_KEY=your_api_key_here
 LLM_BASE_URL=your_api_base_url
 
-4. 启动服务
+**4. 启动服务**
 python app.py
 
-5. 打开浏览器
+**5. 打开浏览器**
 访问 http://localhost:5000，开始体验！
 
 📁 项目结构
