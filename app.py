@@ -73,7 +73,7 @@ def chat():
     full_messages = [{"role": "system", "content": system_prompt}] + messages
 
     # 3. 调用大模型
-    model = data.get("model", "gpt-3.5-turbo")
+    model = data.get("model", "claude-sonnet-4-6")
     response = client.chat.completions.create(
         model=model,
         max_tokens=1000,
