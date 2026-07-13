@@ -1170,41 +1170,61 @@
             showPage('chatConvPage');
         }
 
+        // 对话历史（发给后端用于保持上下文）
+        let chatHistory = [];
+        
         // ===== 发送消息 =====
         function sendMsg() {
             const input = document.getElementById('chatInput');
             const msg = input.value.trim();
             if (!msg) return;
-
             const container = document.getElementById('chatMessages');
-
+        
             // 自己的消息
             const selfMsg = document.createElement('div');
             selfMsg.className = 'chat-msg self';
             selfMsg.textContent = msg;
             container.appendChild(selfMsg);
-
             input.value = '';
             container.scrollTop = container.scrollHeight;
-
-            // 模拟回复
-            setTimeout(() => {
-                const replies = [
-                    '嗯嗯，我在听呢～',
-                    '好有意思呀！再多说一点？',
-                    '原来如此！学到了 ✨',
-                    '哈哈，你真有趣 😄',
-                    '我懂你的感觉～',
-                    '今天天气这么好，适合聊点开心的 🌤️',
-                    '这个话题我很感兴趣！',
-                    '你总是能让我想到新的角度 🌱'
-                ];
-                const reply = document.createElement('div');
-                reply.className = 'chat-msg other';
-                reply.textContent = replies[Math.floor(Math.random() * replies.length)];
-                container.appendChild(reply);
-                container.scrollTop = container.scrollHeight;
-            }, 500 + Math.random() * 600);
+        
+            chatHistory.push({ role: 'user', content: msg });
+        
+            // 临时的"思考中"气泡
+            const typing = document.createElement('div');
+            typing.className = 'chat-msg other';
+            typing.textContent = '…';
+            container.appendChild(typing);
+            container.scrollTop = container.scrollHeight;
+        
+            fetch('/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ messages: chatHistory })
+            })
+                .then(res => {
+                    if (!res.ok) throw new Error('网络请求失败：' + res.status);
+                    return res.json();
+                })
+                .then(data => {
+                    typing.remove();
+                    const replyText = data.reply || '（没有收到回复，请检查后端）';
+                    const reply = document.createElement('div');
+                    reply.className = 'chat-msg other';
+                    reply.textContent = replyText;
+                    container.appendChild(reply);
+                    container.scrollTop = container.scrollHeight;
+                    chatHistory.push({ role: 'assistant', content: replyText });
+                })
+                .catch(err => {
+                    typing.remove();
+                    const errMsg = document.createElement('div');
+                    errMsg.className = 'chat-msg other';
+                    errMsg.textContent = '⚠️ 连接后端失败：' + err.message;
+                    container.appendChild(errMsg);
+                    container.scrollTop = container.scrollHeight;
+                    console.error(err);
+                });
         }
 
         // ===== 打开日记详情 =====
