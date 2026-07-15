@@ -29,10 +29,10 @@
 | 模块 | 技术 |
 |------|------|
 | 前端 | HTML5 + CSS3 + 原生 JavaScript（响应式设计） |
-| 后端 | Python Flask / Node.js（根据你的实际情况填写） |
-| AI 模型 | 大语言模型（LLM），通过 API 调用（如 OpenAI / Claude / 国内大模型） |
+| 后端 | Python Flask / Node.js |
+| AI 模型 | 大语言模型（LLM），通过 API 调用（如 OpenAI / Claude / DeepSeek） |
 | 记忆模块 | RAG（检索增强生成），结合向量检索与上下文管理 |
-| 原型设计 | Figma / 墨刀 |
+| 原型设计 | Figma |
 
 ---
 
