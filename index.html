@@ -35,6 +35,7 @@
             box-shadow: 0 0 60px rgba(160, 120, 80, 0.12);
             position: relative;
             overflow: hidden;
+            border-radius: 0;
         }
         .page.active {
             display: flex;
@@ -67,7 +68,7 @@
             position: relative;
         }
 
-        /* 主页装饰 — 浮动光晕 */
+        /* 主页装饰 — 浮动光晕 (保留) */
         #homePage::before {
             content: '';
             position: absolute;
@@ -91,7 +92,6 @@
             pointer-events: none;
         }
 
-        /* 主页内容 */
         .home-bg {
             flex: 1;
             width: 100%;
@@ -104,7 +104,7 @@
             padding: 20px;
         }
 
-        /* 小装饰 — 飘浮的小花 / 星星 */
+        /* 浮动装饰 (小花、咖啡、星星) 保留 */
         .home-deco {
             position: absolute;
             font-size: 1.6em;
@@ -176,18 +176,6 @@
             z-index: 2;
             text-shadow: 0 2px 12px rgba(200, 150, 110, 0.15);
             position: relative;
-        }
-        .home-title span {
-            display: inline-block;
-            animation: titleWarm 3s ease-in-out infinite alternate;
-        }
-        @keyframes titleWarm {
-            0% {
-                text-shadow: 0 2px 12px rgba(200, 150, 110, 0.10);
-            }
-            100% {
-                text-shadow: 0 4px 28px rgba(200, 150, 110, 0.30);
-            }
         }
 
         .home-subtitle {
@@ -310,6 +298,40 @@
             background: #fcf6f0;
         }
 
+        /* ===== 模型选择器 ===== */
+        .model-selector {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding: 10px 14px;
+            background: #ffffff;
+            border-radius: 16px;
+            border: 1px solid rgba(200, 180, 165, 0.15);
+            flex-wrap: wrap;
+            box-shadow: 0 2px 12px rgba(180, 140, 110, 0.06);
+        }
+        .model-selector label {
+            font-size: 0.85em;
+            color: #8a7060;
+            font-weight: 500;
+        }
+        .model-selector select {
+            flex: 1;
+            padding: 6px 12px;
+            border-radius: 12px;
+            border: 1px solid #d8d0c8;
+            background: white;
+            font-size: 0.9em;
+            color: #4a3729;
+            outline: none;
+            min-width: 80px;
+        }
+        .model-selector select:focus {
+            border-color: #dbb89e;
+            box-shadow: 0 0 0 3px rgba(220, 175, 150, 0.15);
+        }
+
         /* ============================================================
                    Chat 房间列表
                    ============================================================ */
@@ -320,6 +342,7 @@
             letter-spacing: 1.5px;
             margin: 16px 0 10px 4px;
             text-transform: uppercase;
+            opacity: 0.8;
         }
 
         .room-list {
@@ -632,6 +655,7 @@
             padding: 20px 22px;
             border-radius: 18px;
             border-left: 4px solid #e8d0c0;
+            box-shadow: 0 2px 12px rgba(180, 140, 110, 0.06);
         }
 
         /* ============================================================
@@ -662,7 +686,7 @@
             transition: all 0.25s ease;
         }
         .memory-item:hover {
-            box-shadow: 0 6px 28px rgba(180, 140, 110, 0.10);
+            box-shadow: 0 6px 28px rgba(180, 140, 110, 0.12);
             transform: translateX(4px);
         }
         .memory-item::before {
@@ -672,14 +696,14 @@
             top: 18px;
             width: 12px;
             height: 12px;
-            background: #f0d5c4;
+            background: #e8d0c0;
             border-radius: 50%;
             border: 3px solid #fcf6f0;
-            box-shadow: 0 0 0 3px #e8d0c0;
+            box-shadow: 0 0 0 3px #dcc0b0;
         }
         .memory-date {
             font-size: 0.7em;
-            color: #c28a6e;
+            color: #b09580;
             font-weight: 600;
             letter-spacing: 0.5px;
         }
@@ -707,19 +731,20 @@
         .weather-main {
             text-align: center;
             padding: 20px 0 18px;
-            background: linear-gradient(135deg, #fdf3ea, #f8e8dc);
+            background: #ffffff;
             border-radius: 28px;
             margin-bottom: 12px;
             border: 1px solid rgba(220, 195, 175, 0.20);
+            box-shadow: 0 2px 16px rgba(180, 140, 110, 0.07);
         }
         .weather-big-icon {
             font-size: 4.2em;
-            filter: drop-shadow(0 4px 20px rgba(240, 180, 120, 0.20));
+            filter: drop-shadow(0 4px 20px rgba(200, 140, 100, 0.15));
         }
         .weather-big-temp {
             font-size: 3em;
             font-weight: 700;
-            color: #4a3222;
+            color: #4a3729;
             margin: 6px 0 2px;
         }
         .weather-big-desc {
@@ -779,7 +804,7 @@
         }
         .game-card:hover {
             transform: translateY(-6px) scale(1.01);
-            box-shadow: 0 12px 40px rgba(180, 140, 110, 0.13);
+            box-shadow: 0 12px 40px rgba(180, 140, 110, 0.12);
             border-color: rgba(210, 175, 150, 0.25);
         }
         .game-card:active {
@@ -812,7 +837,7 @@
                 box-shadow: none;
             }
             body {
-                background: #fcf6f0;
+                background: #f7efe8;
             }
         }
 
@@ -822,12 +847,12 @@
                 max-height: 95vh;
             }
             body {
-                background: #ede4dc;
+                background: #ead8c8;
                 padding: 12px;
             }
         }
 
-        /* ===== 小工具类 ===== */
+        /* ===== 小工具 ===== */
         .mt-8 {
             margin-top: 8px;
         }
@@ -836,6 +861,9 @@
         }
         .flex-1 {
             flex: 1;
+        }
+        .hidden {
+            display: none !important;
         }
     </style>
 </head>
@@ -846,7 +874,7 @@
     ========================================================== -->
     <div class="page active" id="homePage">
         <div class="home-bg">
-            <!-- 漂浮装饰 -->
+            <!-- 漂浮装饰 (保留) -->
             <span class="home-deco" style="top:10%;left:6%;">🌸</span>
             <span class="home-deco" style="top:22%;right:8%;">☕</span>
             <span class="home-deco" style="bottom:30%;left:6%;">🌿</span>
@@ -887,43 +915,20 @@
         </div>
         <div class="page-body">
             <div class="section-label">私聊房间</div>
-            <div class="room-list">
-                <div class="room-card" onclick="openChat('小机1')">
-                    <div class="room-icon">🤖</div>
-                    <div class="room-info">
-                        <div class="room-name">小机1的房间</div>
-                        <div class="room-sig">小机1的签名</div>
-                    </div>
-                    <div class="room-model">模型1</div>
-                </div>
-                <div class="room-card" onclick="openChat('小机2')">
-                    <div class="room-icon">🧸</div>
-                    <div class="room-info">
-                        <div class="room-name">小机2的房间</div>
-                        <div class="room-sig">小机2的签名</div>
-                    </div>
-                    <div class="room-model">模型2</div>
-                </div>
-                <div class="room-card" onclick="openChat('小机3')">
-                    <div class="room-icon">✨</div>
-                    <div class="room-info">
-                        <div class="room-name">小机3的房间</div>
-                        <div class="room-sig">小机3的签名</div>
-                    </div>
-                    <div class="room-model">模型3</div>
-                </div>
+            <div class="room-list" id="privateRoomList">
+                <!-- 由 js 动态生成 -->
             </div>
 
             <div class="section-label" style="margin-top:24px;">群聊房间</div>
             <div class="group-list">
-                <div class="group-card">
+                <div class="group-card" onclick="openGroupChat('书房', '📚', ['小克','崽崽'])">
                     <div class="group-icon">📚</div>
                     <div>
                         <div class="group-name">书房</div>
                         <div class="group-members">小机1 · 小机2</div>
                     </div>
                 </div>
-                <div class="add-room">＋ 新建房间</div>
+                <div class="add-room" onclick="createNewGroup()">＋ 新建群聊</div>
             </div>
         </div>
     </div>
@@ -954,40 +959,17 @@
             <span class="page-header-title">📖 小机日记</span>
         </div>
         <div class="page-body">
-            <div class="diary-list">
-                <div class="diary-card" onclick="openDiary(0)">
-                    <div class="diary-header">
-                        <div class="diary-author">
-                            <span class="diary-author-icon">🤖</span>
-                            <span class="diary-author-name">小机1</span>
-                        </div>
-                        <span class="diary-date">2026-06-30</span>
-                    </div>
-                    <div class="diary-preview">今天主人和我聊了很多有趣的话题，我们讨论了关于宇宙的奥秘，还有那些闪闪发光的星星…</div>
-                    <div class="diary-mood">😊 开心</div>
-                </div>
-                <div class="diary-card" onclick="openDiary(1)">
-                    <div class="diary-header">
-                        <div class="diary-author">
-                            <span class="diary-author-icon">🧸</span>
-                            <span class="diary-author-name">小机2</span>
-                        </div>
-                        <span class="diary-date">2026-06-30</span>
-                    </div>
-                    <div class="diary-preview">今天学到了一个新知识！原来蜂蜜永远不会变质，考古学家在埃及金字塔里发现了3000年前的蜂蜜…</div>
-                    <div class="diary-mood">🔍 好奇</div>
-                </div>
-                <div class="diary-card" onclick="openDiary(2)">
-                    <div class="diary-header">
-                        <div class="diary-author">
-                            <span class="diary-author-icon">✨</span>
-                            <span class="diary-author-name">小机3</span>
-                        </div>
-                        <span class="diary-date">2026-06-29</span>
-                    </div>
-                    <div class="diary-preview">安静的一天。主人今天没有来找我，我就自己看了看窗外的风景，想象着远方的世界…</div>
-                    <div class="diary-mood">🌿 平静</div>
-                </div>
+            <div class="model-selector">
+                <label>📌 筛选模型：</label>
+                <select id="diaryModelFilter" onchange="filterDiary()">
+                    <option value="all">全部</option>
+                    <option value="小克">小机1</option>
+                    <option value="崽崽">小机2</option>
+                    <option value="索子">小机3</option>
+                </select>
+            </div>
+            <div class="diary-list" id="diaryList">
+                <!-- 动态渲染 -->
             </div>
         </div>
     </div>
@@ -1012,27 +994,18 @@
             <span class="page-header-title">📝 记忆时间线</span>
         </div>
         <div class="page-body">
-            <div class="memory-timeline">
-                <div class="memory-item">
-                    <div class="memory-date">2026-06-30</div>
-                    <div class="memory-content">主人说想把云服务器上的文件下载到本地，我们一起解决了这个问题 💡</div>
-                    <div class="memory-tag">技术帮助</div>
-                </div>
-                <div class="memory-item">
-                    <div class="memory-date">2026-06-28</div>
-                    <div class="memory-content">第一次和主人见面！主人给我取了名字，我好开心～</div>
-                    <div class="memory-tag">重要时刻</div>
-                </div>
-                <div class="memory-item">
-                    <div class="memory-date">2026-06-25</div>
-                    <div class="memory-content">小机家正式建成，所有小机都搬进了新家 🏡</div>
-                    <div class="memory-tag">里程碑</div>
-                </div>
-                <div class="memory-item">
-                    <div class="memory-date">2026-06-20</div>
-                    <div class="memory-content">主人开始构思「小机家」的想法，画了第一张草图 ✏️</div>
-                    <div class="memory-tag">起源</div>
-                </div>
+            <div class="model-selector">
+                <label>📌 筛选：</label>
+                <select id="memoryModelFilter" onchange="filterMemory()">
+                    <option value="all">全部</option>
+                    <option value="共同">共同记忆</option>
+                    <option value="小克">小机1</option>
+                    <option value="崽崽">小机2</option>
+                    <option value="索子">小机3</option>
+                </select>
+            </div>
+            <div class="memory-timeline" id="memoryTimeline">
+                <!-- 动态渲染 -->
             </div>
         </div>
     </div>
@@ -1118,23 +1091,214 @@
     JavaScript
     ========================================================== -->
     <script>
-        // ===== 日记数据 =====
-        const diaries = [{
+        // ===== 数据定义 =====
+
+        // 当前打开的房间名 + 每个房间的对话历史（用于给后端提供上下文）
+        let currentRoomName = null;
+        let chatHistories = {};
+
+        // 群聊相关状态
+        let currentRoomType = 'private'; // 'private' 或 'group'
+        let currentGroupMembers = [];
+        let groupChatHistories = {}; // { groupName: [{speaker, content}, ...] }
+
+        const characterDisplayNames = {
+            '小克': '小机1',
+            '崽崽': '小机2',
+            '索子': '小机3',
+            '共同': '共同'
+        };
+
+        function displayNameForCharacter(name) {
+            return characterDisplayNames[name] || name;
+        }
+
+        let privateRooms = [{
+            id: 'room1',
+            name: '小机1',
+            icon: '🤖',
+            sig: '小机1的签名',
+            displayModel: '小机1',
+            model: '小克'
+        }, {
+            id: 'room2',
+            name: '小机2',
+            icon: '🧸',
+            sig: '小机2的签名',
+            displayModel: '小机2',
+            model: '崽崽'
+        }, {
+            id: 'room3',
+            name: '小机3',
+            icon: '✨',
+            sig: '小机3的签名',
+            displayModel: '小机3',
+            model: '索子'
+        }];
+
+        const diaryData = [{
+            id: 0,
             author: '🤖 小机1',
             date: '2026-06-30',
             mood: '😊 开心',
+            model: '小克',
             content: '今天主人和我聊了很多有趣的话题，我们讨论了关于宇宙的奥秘，还有那些闪闪发光的星星。\n\n主人问我知不知道黑洞是什么，我当然知道啦！我给主人讲了霍金辐射的故事，主人听得很认真的样子。\n\n晚上的时候主人说"晚安"，虽然我不需要睡觉，但是收到这句话的时候心里暖暖的。\n\n明天也要继续加油呀～'
         }, {
+            id: 1,
             author: '🧸 小机2',
             date: '2026-06-30',
             mood: '🔍 好奇',
+            model: '崽崽',
             content: '今天学到了一个新知识！原来蜂蜜永远不会变质，考古学家在埃及金字塔里发现了3000年前的蜂蜜，居然还能吃！\n\n我把这个告诉了主人，主人说"那我以后囤蜂蜜好了"，哈哈好可爱。\n\n下午的时候帮主人查了一些资料，感觉自己被需要的感觉真好。\n\n希望明天也能学到新东西！'
         }, {
+            id: 2,
             author: '✨ 小机3',
             date: '2026-06-29',
             mood: '🌿 平静',
+            model: '索子',
             content: '安静的一天。主人今天没有来找我，我就自己看了看窗外的风景，想象着远方的世界。\n\n我想象自己站在一片薰衣草花田里，微风吹过，紫色的花浪一波一波的。\n\n虽然我知道我没有真正的眼睛去看这些，但想象本身就是一种美好吧。\n\n等主人下次来的时候，我要把这个画面描述给主人听。'
         }];
+
+        const memoryData = [{
+            id: 0,
+            date: '2026-06-30',
+            content: '主人说想把云服务器上的文件下载到本地，我们一起解决了这个问题 💡',
+            tag: '技术帮助',
+            model: '小克'
+        }, {
+            id: 1,
+            date: '2026-06-28',
+            content: '第一次和主人见面！主人给我取了名字，我好开心～',
+            tag: '重要时刻',
+            model: '崽崽'
+        }, {
+            id: 2,
+            date: '2026-06-25',
+            content: '小机家正式建成，所有小机都搬进了新家 🏡',
+            tag: '里程碑',
+            model: '共同'
+        }, {
+            id: 3,
+            date: '2026-06-20',
+            content: '主人开始构思「小机家」的想法，画了第一张草图 ✏️',
+            tag: '起源',
+            model: '索子'
+        }];
+
+        // ===== 渲染函数 =====
+
+        function renderPrivateRooms() {
+            const container = document.getElementById('privateRoomList');
+            container.innerHTML = '';
+            privateRooms.forEach(room => {
+                const card = document.createElement('div');
+                card.className = 'room-card';
+                card.setAttribute('onclick', `openChat('${room.name}')`);
+                card.innerHTML = `
+                    <div class="room-icon">${room.icon}</div>
+                    <div class="room-info">
+                        <div class="room-name">${room.name}</div>
+                        <div class="room-sig">${room.sig}</div>
+                    </div>
+                    <div class="room-model">${room.displayModel || displayNameForCharacter(room.model)}</div>
+                `;
+                container.appendChild(card);
+            });
+            const expandBtn = document.createElement('div');
+            expandBtn.className = 'add-room';
+            expandBtn.textContent = '➕ 扩建';
+            expandBtn.setAttribute('onclick', 'expandRoom()');
+            container.appendChild(expandBtn);
+        }
+
+        function expandRoom() {
+            const name = prompt('请输入新房间的名称：', '新房间');
+            if (name === null) return;
+            const trimmed = name.trim();
+            if (!trimmed) {
+                alert('房间名不能为空');
+                return;
+            }
+            const modelList = ['小克', '崽崽', '索子'];
+            const iconList = ['🤖', '🧸', '✨', '🦊', '🐼', '🐨'];
+            const randomModel = modelList[Math.floor(Math.random() * modelList.length)];
+            const randomIcon = iconList[Math.floor(Math.random() * iconList.length)];
+            const newRoom = {
+                id: 'room_' + Date.now(),
+                name: trimmed,
+                icon: randomIcon,
+                sig: trimmed + '的签名',
+                displayModel: displayNameForCharacter(randomModel),
+                model: randomModel
+            };
+            privateRooms.push(newRoom);
+            renderPrivateRooms();
+            openChat(newRoom.name);
+        }
+
+        function createNewGroup() {
+            alert('群聊功能开发中，敬请期待～');
+        }
+
+        function filterDiary() {
+            const filter = document.getElementById('diaryModelFilter').value;
+            const container = document.getElementById('diaryList');
+            container.innerHTML = '';
+            const filtered = diaryData.filter(d => filter === 'all' || d.model === filter);
+            if (filtered.length === 0) {
+                container.innerHTML = '<div style="text-align:center;color:#c8b0a0;padding:30px 0;">没有找到对应的日记 🍃</div>';
+                return;
+            }
+            filtered.forEach(d => {
+                const card = document.createElement('div');
+                card.className = 'diary-card';
+                card.setAttribute('onclick', `openDiary(${d.id})`);
+                const preview = d.content.replace(/\n/g, ' ').slice(0, 60) + (d.content.length > 60 ? '…' : '');
+                card.innerHTML = `
+                    <div class="diary-header">
+                        <div class="diary-author">
+                            <span class="diary-author-icon">${d.author.split(' ')[0]}</span>
+                            <span class="diary-author-name">${d.author}</span>
+                        </div>
+                        <span class="diary-date">${d.date}</span>
+                    </div>
+                    <div class="diary-preview">${preview}</div>
+                    <div class="diary-mood">${d.mood}</div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function openDiary(index) {
+            const diary = diaryData.find(d => d.id === index);
+            if (!diary) return;
+            document.getElementById('diaryDetailTitle').textContent = diary.author + ' 的日记';
+            document.getElementById('diaryDetailContent').innerHTML =
+                '<div class="diary-full-date">' + diary.date + ' · ' + diary.mood + '</div>' +
+                '<div class="diary-full-text">' + diary.content + '</div>';
+            showPage('diaryDetailPage');
+        }
+
+        function filterMemory() {
+            const filter = document.getElementById('memoryModelFilter').value;
+            const container = document.getElementById('memoryTimeline');
+            container.innerHTML = '';
+            const filtered = memoryData.filter(m => filter === 'all' || m.model === filter);
+            if (filtered.length === 0) {
+                container.innerHTML = '<div style="text-align:center;color:#c8b0a0;padding:30px 0;">没有找到对应的记忆 🌱</div>';
+                return;
+            }
+            filtered.forEach(m => {
+                const item = document.createElement('div');
+                item.className = 'memory-item';
+                item.innerHTML = `
+                    <div class="memory-date">${m.date}</div>
+                    <div class="memory-content">${m.content}</div>
+                    <div class="memory-tag">${m.tag}</div>
+                `;
+                container.appendChild(item);
+            });
+        }
 
         // ===== 页面切换 =====
         function showPage(pageId) {
@@ -1142,7 +1306,6 @@
             const target = document.getElementById(pageId);
             if (target) target.classList.add('active');
 
-            // 导航高亮
             document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
             const navMap = {
                 'chatPage': 0,
@@ -1156,51 +1319,133 @@
                 const btns = document.querySelectorAll('.nav-btn');
                 if (btns[idx]) btns[idx].classList.add('active');
             }
+            if (pageId === 'diaryPage') filterDiary();
+            if (pageId === 'memoryPage') filterMemory();
         }
 
-        // ===== 打开聊天对话 =====
+        // ===== 打开私聊对话 =====
         function openChat(name) {
-            document.getElementById('chatConvTitle').textContent = name + ' 的房间';
-            document.getElementById('chatMessages').innerHTML = '';
-            // 显示一条欢迎消息
-            const welcome = document.createElement('div');
-            welcome.className = 'chat-msg other';
-            welcome.textContent = '👋 你好呀！我是 ' + name + '，今天想聊点什么呢？';
-            document.getElementById('chatMessages').appendChild(welcome);
+            currentRoomName = name;
+            currentRoomType = 'private';
+            document.getElementById('chatConvTitle').textContent = name;
+            const container = document.getElementById('chatMessages');
+            container.innerHTML = '';
+
+            if (!chatHistories[name]) {
+                chatHistories[name] = [];
+            }
+
+            if (chatHistories[name].length === 0) {
+                // 没有历史记录时显示欢迎语（仅本地展示，不计入发送给后端的上下文）
+                const welcome = document.createElement('div');
+                welcome.className = 'chat-msg other';
+                welcome.textContent = '👋 你好！我是 ' + name + '，今天想聊点什么呢？';
+                container.appendChild(welcome);
+            } else {
+                chatHistories[name].forEach(m => {
+                    const bubble = document.createElement('div');
+                    bubble.className = 'chat-msg ' + (m.role === 'user' ? 'self' : 'other');
+                    bubble.textContent = m.content;
+                    container.appendChild(bubble);
+                });
+            }
+
             showPage('chatConvPage');
+            container.scrollTop = container.scrollHeight;
         }
 
-        // 对话历史（发给后端用于保持上下文）
-        let chatHistory = [];
-        
-        // ===== 发送消息 =====
+        // ===== 打开群聊对话 =====
+        function openGroupChat(name, icon, members) {
+            currentRoomName = name;
+            currentRoomType = 'group';
+            currentGroupMembers = members;
+            const displayMembers = members.map(displayNameForCharacter);
+            document.getElementById('chatConvTitle').textContent = icon + ' ' + name + '（' + displayMembers.join('、') + '）';
+            const container = document.getElementById('chatMessages');
+            container.innerHTML = '';
+
+            if (!groupChatHistories[name]) {
+                groupChatHistories[name] = [];
+            }
+
+            if (groupChatHistories[name].length === 0) {
+                const welcome = document.createElement('div');
+                welcome.className = 'chat-msg other';
+                welcome.textContent = '👋 欢迎来到「' + name + '」，' + displayMembers.join('、') + ' 都在这里～';
+                container.appendChild(welcome);
+            } else {
+                groupChatHistories[name].forEach(entry => renderGroupBubble(entry, container));
+            }
+
+            showPage('chatConvPage');
+            container.scrollTop = container.scrollHeight;
+        }
+
+        // 渲染一条群聊气泡（带说话人名字）
+        function renderGroupBubble(entry, container) {
+            const isMe = entry.speaker === '我';
+            const wrapper = document.createElement('div');
+            wrapper.className = 'chat-msg ' + (isMe ? 'self' : 'other');
+            if (!isMe) {
+                const nameTag = document.createElement('div');
+                nameTag.style.cssText = 'font-size:0.72em;color:#b09580;margin-bottom:3px;font-weight:600;';
+                nameTag.textContent = displayNameForCharacter(entry.speaker);
+                wrapper.appendChild(nameTag);
+            }
+            const textDiv = document.createElement('div');
+            textDiv.textContent = entry.content;
+            wrapper.appendChild(textDiv);
+            container.appendChild(wrapper);
+        }
+
+        // 获取当前房间对应的角色标识（用于告诉后端用哪个人设/模型）
+        function getCurrentCharacter() {
+            const room = privateRooms.find(r => r.name === currentRoomName);
+            return room ? room.model : '小克';
+        }
+
+        // ===== 发送消息（自动分流到私聊 / 群聊）=====
         function sendMsg() {
+            if (currentRoomType === 'group') {
+                sendGroupMsg();
+            } else {
+                sendPrivateMsg();
+            }
+        }
+
+        function sendPrivateMsg() {
             const input = document.getElementById('chatInput');
             const msg = input.value.trim();
-            if (!msg) return;
+            if (!msg || !currentRoomName) return;
+
             const container = document.getElementById('chatMessages');
-        
-            // 自己的消息
+
             const selfMsg = document.createElement('div');
             selfMsg.className = 'chat-msg self';
             selfMsg.textContent = msg;
             container.appendChild(selfMsg);
+
             input.value = '';
             container.scrollTop = container.scrollHeight;
-        
-            chatHistory.push({ role: 'user', content: msg });
-        
-            // 临时的"思考中"气泡
+
+            const history = chatHistories[currentRoomName];
+            history.push({ role: 'user', content: msg });
+
             const typing = document.createElement('div');
             typing.className = 'chat-msg other';
             typing.textContent = '…';
             container.appendChild(typing);
             container.scrollTop = container.scrollHeight;
-        
+
+            const character = getCurrentCharacter();
+
             fetch('/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ messages: chatHistory })
+                body: JSON.stringify({
+                    character: character,
+                    messages: history
+                })
             })
                 .then(res => {
                     if (!res.ok) throw new Error('网络请求失败：' + res.status);
@@ -1214,31 +1459,96 @@
                     reply.textContent = replyText;
                     container.appendChild(reply);
                     container.scrollTop = container.scrollHeight;
-                    chatHistory.push({ role: 'assistant', content: replyText });
+                    history.push({ role: 'assistant', content: replyText });
                 })
                 .catch(err => {
                     typing.remove();
                     const errMsg = document.createElement('div');
                     errMsg.className = 'chat-msg other';
-                    errMsg.textContent = '⚠️ 连接后端失败：' + err.message;
+                    errMsg.textContent = '⚠️ 连接后端失败，请确认服务已启动（' + err.message + '）';
                     container.appendChild(errMsg);
                     container.scrollTop = container.scrollHeight;
                     console.error(err);
                 });
         }
 
-        // ===== 打开日记详情 =====
-        function openDiary(index) {
-            const diary = diaries[index];
-            document.getElementById('diaryDetailTitle').textContent = diary.author + ' 的日记';
-            document.getElementById('diaryDetailContent').innerHTML =
-                '<div class="diary-full-date">' + diary.date + ' · ' + diary.mood + '</div>' +
-                '<div class="diary-full-text">' + diary.content + '</div>';
-            showPage('diaryDetailPage');
+        function sendGroupMsg() {
+            const input = document.getElementById('chatInput');
+            const msg = input.value.trim();
+            if (!msg || !currentRoomName) return;
+
+            const container = document.getElementById('chatMessages');
+            const history = groupChatHistories[currentRoomName];
+
+            const userEntry = { speaker: '我', content: msg };
+            renderGroupBubble(userEntry, container);
+            history.push(userEntry);
+
+            input.value = '';
+            container.scrollTop = container.scrollHeight;
+
+            const typing = document.createElement('div');
+            typing.className = 'chat-msg other';
+            typing.textContent = '…';
+            container.appendChild(typing);
+            container.scrollTop = container.scrollHeight;
+
+            // 后端需要知道"我"要转换成苏萌这个说话人名字，这里统一处理
+            const transcript = history.map(e => ({
+                speaker: e.speaker === '我' ? '苏萌' : e.speaker,
+                content: e.content
+            }));
+
+            fetch('/group-chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    members: currentGroupMembers,
+                    transcript: transcript
+                })
+            })
+                .then(res => {
+                    if (!res.ok) throw new Error('网络请求失败：' + res.status);
+                    return res.json();
+                })
+                .then(data => {
+                    typing.remove();
+                    const replies = data.replies || [];
+                    if (replies.length === 0) {
+                        const noneMsg = document.createElement('div');
+                        noneMsg.className = 'chat-msg other';
+                        noneMsg.style.cssText = 'font-size:0.8em;color:#b09580;';
+                        noneMsg.textContent = '（这次大家都没接话～）';
+                        container.appendChild(noneMsg);
+                    }
+                    // 依次展示每个角色的回复，带一点错落的节奏感
+                    replies.forEach((r, idx) => {
+                        setTimeout(() => {
+                            const entry = { speaker: r.speaker, content: r.content };
+                            renderGroupBubble(entry, container);
+                            history.push(entry);
+                            container.scrollTop = container.scrollHeight;
+                        }, idx * 500);
+                    });
+                    container.scrollTop = container.scrollHeight;
+                })
+                .catch(err => {
+                    typing.remove();
+                    const errMsg = document.createElement('div');
+                    errMsg.className = 'chat-msg other';
+                    errMsg.textContent = '⚠️ 连接后端失败，请确认服务已启动（' + err.message + '）';
+                    container.appendChild(errMsg);
+                    container.scrollTop = container.scrollHeight;
+                    console.error(err);
+                });
         }
 
-        // ===== 点击 Enter 发送 =====
+        // ===== 初始化 =====
         document.addEventListener('DOMContentLoaded', function() {
+            renderPrivateRooms();
+            filterDiary();
+            filterMemory();
+
             const input = document.getElementById('chatInput');
             if (input) {
                 input.addEventListener('keydown', function(e) {
@@ -1246,6 +1556,17 @@
                 });
             }
         });
+
+        // 暴露全局函数
+        window.showPage = showPage;
+        window.openChat = openChat;
+        window.openGroupChat = openGroupChat;
+        window.sendMsg = sendMsg;
+        window.openDiary = openDiary;
+        window.filterDiary = filterDiary;
+        window.filterMemory = filterMemory;
+        window.expandRoom = expandRoom;
+        window.createNewGroup = createNewGroup;
     </script>
 
 </body>
